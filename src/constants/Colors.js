@@ -1,0 +1,11 @@
+export const Colors = {
+  PURPLE: '#662382',
+  PURPLE_LIGHT: '#92003526',
+  OCEAN_BLUE: '#07B0D7',
+  OCEAN_BLUE_LIGHT: '#07B0D73D',
+  PURPLE_BLUE: '#0F56B3',
+  DIM_PURPLE_BLUE: '#a1bce1',
+  DIM_PURPLE_BLUE_LIGHT: '#c5d6ed',
+  LIGHT_PURPLE: '#9098eb',
+  LIGHT_PURPLE_LIGHT: '#ebedff',
+}
