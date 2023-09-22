@@ -12,7 +12,7 @@ function Footer() {
                 target="_blank"
                 class="display-6 text-white h2"
               >
-                ToyS p a c e
+                Hello Leo
               </a>
               <p class="mt-1 text-white">© 2023</p>
             </div>

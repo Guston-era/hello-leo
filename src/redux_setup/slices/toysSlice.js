@@ -24,17 +24,26 @@ const toysSlice = createSlice({
       //systematic top down
       //age
       if (state.filters.age.length > 0) {
-        filteredData = defaulttoydata.filter((dt) => {
-          if (state.filters.age.includes(dt.age)) {
-            return true
-          }
+        filteredData = filteredData.filter((dt) => {
+          const contains = state.filters.age.some((element) => {
+            return dt.age.indexOf(element) !== -1
+          })
+
+          return contains
         })
       }
       if (state.filters.category.length > 0) {
+        // filteredData = filteredData.filter((dt) => {
+        //   if (state.filters.category.includes(dt.category)) {
+        //     return true
+        //   }
+        // })
         filteredData = filteredData.filter((dt) => {
-          if (state.filters.category.includes(dt.category)) {
-            return true
-          }
+          const contains = state.filters.category.some((element) => {
+            return dt.category.indexOf(element) !== -1
+          })
+
+          return contains
         })
       }
       if (!!state.filters.minPrice) {

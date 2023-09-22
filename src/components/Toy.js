@@ -36,25 +36,26 @@ function Toy({ toy }) {
                   <span class="text-muted">{toy.orders} orders</span>
                 </div>
 
-                <p class="text mb-4 mb-md-0">
-                  Short description about the product goes here, for ex its
-                  features. Lorem ipsum dolor sit amet with hapti you enter into
-                  any new area of science, you almost lorem ipsum is great text
-                  consectetur adipisicing
-                </p>
+                <p class="text mb-4 mb-md-0">{toy?.desc}</p>
               </div>
               <div class="col-xl-3 col-md-3 col-sm-5">
                 <div class="d-flex flex-row align-items-center mb-1">
                   <h4 class="mb-1 me-1">$ {toy.price}</h4>
-                  <span class="text-danger">
+                  {/* <span class="text-danger">
                     <s>$ {toy.oldprice}</s>
-                  </span>
+                  </span> */}
                 </div>
-                <h6 class="text-success">{toy.shipping}</h6>
+                <h6 class="text-success">{toy.age?.toString()}</h6>
                 <div class="mt-4">
-                  <button class="btn btn-primary shadow-0" type="button">
+                  <a
+                    class="btn btn-primary shadow-0"
+                    type="button"
+                    href={toy?.amazonlink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Buy on Amazon
-                  </button>
+                  </a>
                   {/* <a
                     href="#!"
                     class="btn btn-light border px-2 pt-2 icon-hover"

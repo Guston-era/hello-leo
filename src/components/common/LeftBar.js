@@ -12,7 +12,7 @@ function LeftBar() {
   const filtrs = useSelector(selectFilters)
   const dispatch = useDispatch()
   useEffect(() => {
-    console.log('wfilters changed')
+    console.log('wfilters changed', filtrs)
     dispatch(filterToys())
   }, [filtrs])
 
@@ -76,11 +76,12 @@ function LeftBar() {
               <div class="accordion-body">
                 <div>
                   {[
-                    '12-18 months',
-                    '18-24 months',
-                    '2-5 years',
-                    '5-10 years',
-                    '10+ years',
+                    '1-4 years',
+                    '2-4 years',
+                    '3-5 years',
+                    '5-7 years',
+                    '6-8 years',
+                    '8-10 years',
                   ].map((age, index) => (
                     <div class="form-check" key={index}>
                       <input
@@ -121,27 +122,27 @@ function LeftBar() {
             >
               <div class="accordion-body">
                 <div>
-                  {['Action figures', 'Creative', 'Dolls', 'Transport'].map(
-                    (category, index) => (
-                      <div class="form-check" key={index}>
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value={category}
-                          checked={filtrs.category?.includes(category)}
-                          id={`category${index}`}
-                          onChange={(e) => checkboxChange('category', e)}
-                        />
-                        <label
-                          class="form-check-label"
-                          for={`category${index}`}
-                        >
-                          {category}
-                        </label>
-                        <span class="badge badge-secondary float-end"></span>
-                      </div>
-                    ),
-                  )}
+                  {[
+                    'self-acceptance',
+                    'healthy coping strategies',
+                    'emotional regulation and resilience',
+                    'perfectionist and anxious tendencies',
+                  ].map((category, index) => (
+                    <div class="form-check" key={index}>
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value={category}
+                        checked={filtrs.category?.includes(category)}
+                        id={`category${index}`}
+                        onChange={(e) => checkboxChange('category', e)}
+                      />
+                      <label class="form-check-label" for={`category${index}`}>
+                        {category}
+                      </label>
+                      <span class="badge badge-secondary float-end"></span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

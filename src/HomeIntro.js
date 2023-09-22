@@ -82,7 +82,7 @@ const HomeIntro = () => {
 
   return (
     <div className="container">
-      <h3>ToyS p a c e</h3>
+      <h3>Hello Leo</h3>
       <div className={'jumbotron'}>
         <div className="row">
           <div
@@ -185,18 +185,19 @@ const First = (props) => {
 
   return (
     <div>
-      <h3 className="text-center">Welcome to ToyS p a c e!</h3>
+      <h3 className="text-center">Welcome to Hello Leo!</h3>
       <h5 className="text-center">Which age gap does your kid(s) lie?</h5>
 
       <div>
         <div class="accordion-body">
           <div>
             {[
-              '12-18 months',
-              '18-24 months',
-              '2-5 years',
-              '5-10 years',
-              '10+ years',
+              '1-4 years',
+              '2-4 years',
+              '3-5 years',
+              '5-7 years',
+              '6-8 years',
+              '8-10 years',
             ].map((age, index) => (
               <div class="form-check" key={index}>
                 <input
@@ -229,29 +230,32 @@ const Second = (props) => {
   return (
     <div>
       <h5 className="text-center">
-        Fantastic! what category(s) of toys does your kid(s) like?
+        Fantastic! what category(s) of books would you buy for your kid(s)?
       </h5>
 
       <div>
         <div class="accordion-body">
           <div>
-            {['Action figures', 'Creative', 'Dolls', 'Transport'].map(
-              (category, index) => (
-                <div class="form-check" key={index}>
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value={category}
-                    id={`category${index}`}
-                    onChange={(e) => props.checkboxChange('category', e)}
-                  />
-                  <label class="form-check-label" for={`category${index}`}>
-                    {category}
-                  </label>
-                  <span class="badge badge-secondary float-end"></span>
-                </div>
-              ),
-            )}
+            {[
+              'self-acceptance',
+              'healthy coping strategies',
+              'emotional regulation and resilience',
+              'perfectionist and anxious tendencies',
+            ].map((category, index) => (
+              <div class="form-check" key={index}>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value={category}
+                  id={`category${index}`}
+                  onChange={(e) => props.checkboxChange('category', e)}
+                />
+                <label class="form-check-label" for={`category${index}`}>
+                  {category}
+                </label>
+                <span class="badge badge-secondary float-end"></span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

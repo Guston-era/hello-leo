@@ -7,17 +7,43 @@ import { selectToys } from './redux_setup/slices/toysSlice'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { selectUser } from './redux_setup/slices/userSlice'
+import keyword_extractor from 'keyword-extractor'
 
 function Home() {
   const toys = useSelector(selectToys)
   const user = useSelector(selectUser)
   const [searchedToys, setSearchedToys] = useState([])
 
+  const testKeywordExtraction = () => {
+    const sentence = 'I am looking for a toy that a 12 year old can play with.'
+
+    //  Extract the keywords
+    const extraction_result = keyword_extractor.extract(sentence, {
+      language: 'english',
+      // remove_digits: true,
+      return_changed_case: true,
+      remove_duplicates: false,
+    })
+
+    console.log('im trying relax', extraction_result)
+  }
+
   const searchToys = (el) => {
     if (el.target?.value !== '') {
-      const filteredToys = toys.filter((t) =>
-        t.name?.toLowerCase()?.includes(el.target?.value?.toLowerCase()),
-      )
+      const filteredToys = toys.filter((t) => {
+        if (t.name?.toLowerCase()?.includes(el.target?.value?.toLowerCase())) {
+          return true
+        }
+        if (t.desc?.toLowerCase()?.includes(el.target?.value?.toLowerCase())) {
+          return true
+        }
+        if (el.target?.value?.toLowerCase()?.includes(t?.price)) {
+          return true
+        }
+        if (el.target?.value?.toLowerCase()?.includes(t?.age?.toLowerCase())) {
+          return true
+        }
+      })
       // console.log(filteredToys)
       setSearchedToys(filteredToys)
     } else {
@@ -33,7 +59,7 @@ function Home() {
             <div class="row gy-3">
               <div class="col-lg-5 col-sm-6 col-6">
                 <a href="" target="_blank" class="float-start display-6">
-                  ToyS p a c e
+                  Hello Leo
                 </a>
               </div>
 
@@ -120,7 +146,10 @@ function Home() {
               <LeftBar />
             </div>
 
-            <div class="col-lg-9">
+            <div
+              class="col-lg-9"
+              style={{ maxHeight: '750px', overflowY: 'scroll' }}
+            >
               <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
                 <strong class="d-block py-2">
                   {toysToDisplay?.length} Items found{' '}
@@ -151,6 +180,12 @@ function Home() {
                   <div className="alert alert-info">
                     We are still populating our inventory for this criteria.
                     Please try again later
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={testKeywordExtraction}
+                    >
+                      Test
+                    </button>
                   </div>
                 )}
               </div>
